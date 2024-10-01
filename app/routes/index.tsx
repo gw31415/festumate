@@ -42,7 +42,7 @@ export default createRoute(async (c) => {
 		value: 0,
 	};
 	if (fetus.gs !== null) {
-		estRow.name = "胎嚢径";
+		estRow.name = "胎嚢";
 		estRow.value = fetus.gs;
 	} else if (fetus.crl !== null) {
 		estRow.name = "頭臀長";
