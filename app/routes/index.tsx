@@ -4,6 +4,7 @@ import { hc } from "hono/client";
 import type { AppType, Fetus } from "./api";
 import Uncover from "../islands/uncover";
 import ReloadButton from "../islands/reloadButton";
+import Description from "../islands/description";
 
 const className = css`
   font-family: sans-serif;
@@ -84,6 +85,7 @@ export default createRoute(async (c) => {
 					</tr>
 				)}
 			</table>
+			<Description />
 			<div style="display: flex; justify-content: center;">
 				<ReloadButton location={weeksParam ? origin : undefined}>
 					ランダム週数
