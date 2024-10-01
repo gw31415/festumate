@@ -27,7 +27,7 @@ function festumate(weeks: number): Fetus {
 	if (weeks < 5 || weeks > 44) {
 		throw new Error("週数が範囲外です");
 	}
-	const months = Math.floor(weeks / 4) + 1;
+	const months = Math.ceil(weeks / 4);
 	const length = months <= 5 ? months * months : months * 5;
 	const mmm = months * months * months;
 	const weight = months <= 5 ? mmm * 2 : mmm * 3;
