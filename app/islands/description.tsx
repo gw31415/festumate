@@ -65,19 +65,19 @@ export default function Description() {
 						</thead>
 						<tbody>
 							<tr>
-								<td>5週～7週</td>
+								<td>4週～8週</td>
 								<th>胎嚢</th>
-								<td>週数 - 4</td>
+								<td>(週数) - 4</td>
 							</tr>
 							<tr>
-								<td>8週～11週</td>
+								<td>7週～11週</td>
 								<th>頭臀長</th>
-								<td>週数 - 7</td>
+								<td>(週数) - 7</td>
 							</tr>
 							<tr>
-								<td>12週～16週</td>
+								<td>12週～</td>
 								<th>児頭大横径</th>
-								<td>週数 ÷ 4</td>
+								<td>(週数) ÷ 4</td>
 							</tr>
 						</tbody>
 					</table>
