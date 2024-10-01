@@ -10,6 +10,9 @@
 			"style": {
 				"useShorthandFunctionType": "off",
 				"noNonNullAssertion": "off"
+			},
+			"a11y": {
+				"useKeyWithClickEvents": "off"
 			}
 		}
 	},

@@ -1,7 +1,7 @@
 import { css } from "hono/css";
 import { createRoute } from "honox/factory";
 import { hc } from "hono/client";
-import type { AppType, Fetus } from "./festumate";
+import type { AppType, Fetus } from "./api";
 import Uncover from "../islands/uncover";
 import ReloadButton from "../islands/reloadButton";
 
@@ -10,11 +10,19 @@ const className = css`
 `;
 
 export default createRoute(async (c) => {
-	const weeks = Math.floor(Math.random() * (44 - 5) + 5);
-	const client = hc<AppType>(
-		new URL("/festumate", new URL(c.req.url).origin).toString(),
-	);
-	const res = await client[":weeks"].$get({
+	const origin = new URL(c.req.url).origin;
+	const weeksParam = c.req.query("weeks");
+	let weeks: number;
+	if (weeksParam) {
+		weeks = Number.parseInt(c.req.query("weeks") ?? "NaN");
+		if (!Number.isInteger(weeks) || weeks < 5 || weeks > 44) {
+			return c.redirect(origin);
+		}
+	} else {
+		weeks = Math.floor(Math.random() * (44 - 5) + 5);
+	}
+	const client = hc<AppType>(new URL("/api", origin).toString());
+	const res = await client.festumate[":weeks"].$get({
 		param: { weeks: weeks.toString() },
 	});
 	if (!res.ok) {
@@ -77,9 +85,11 @@ export default createRoute(async (c) => {
 				)}
 			</table>
 			<div style="display: flex; justify-content: center;">
-				<ReloadButton>再読み込み</ReloadButton>
+				<ReloadButton location={weeksParam ? origin : undefined}>
+					ランダム週数
+				</ReloadButton>
 			</div>
 		</div>,
-		{ title: "Festumate - 胎児データを予測しよう" },
+		{ title: "Festumate - 胎児測定値を予測しよう" },
 	);
 });

@@ -1,4 +1,4 @@
-import { useState } from "hono/jsx";
+import { type PropsWithChildren, useState } from "hono/jsx";
 import { css } from "hono/css";
 
 const base = css`
@@ -15,7 +15,7 @@ ${base}
 opacity: 1;
 `;
 
-export default function Uncover(props: { children: any } = { children: undefined }) {
+export default function Uncover(props: PropsWithChildren) {
 	const [cover, setCover] = useState(true);
 	const toggleCover = () => setCover(!cover);
 	return (

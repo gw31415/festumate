@@ -48,7 +48,7 @@ function festumate(weeks: number): Fetus {
 
 const app = new Hono();
 
-const routes = app.get("/:weeks", async (c) => {
+const routes = app.get("/festumate/:weeks", async (c) => {
 	const weeks = Number.parseInt(c.req.param("weeks"));
 	if (!Number.isInteger(weeks)) {
 		return c.json({ error: "週数が不正です" }, 400);
