@@ -59,27 +59,39 @@ export default createRoute(async (c) => {
 				<tr>
 					<td>身長</td>
 					<td>
-						<Uncover>{fetus.length}</Uncover> cm
+						<Uncover width="5ch" right>
+							{fetus.length}
+						</Uncover>{" "}
+						cm
 					</td>
 				</tr>
 				<tr>
 					<td>体重</td>
 					<td>
-						<Uncover>{fetus.weight}</Uncover> g
+						<Uncover width="5ch" right>
+							{fetus.weight}
+						</Uncover>{" "}
+						g
 					</td>
 				</tr>
 				<tr>
 					<td>子宮底長</td>
 					<td>
-						<Uncover>{fetus.fundus_uteri}</Uncover> cm
+						<Uncover width="5ch" right>
+							{fetus.fundus_uteri}
+						</Uncover>{" "}
+						cm
 					</td>
 				</tr>
 				<tr>
 					<td>
-						週数測定の部位: <Uncover>{estRow.name}</Uncover>
+						週数測定の部位: <Uncover width="5rem">{estRow.name}</Uncover>
 					</td>
 					<td>
-						<Uncover>{estRow.value}</Uncover> cm
+						<Uncover width="5ch" right>
+							{estRow.value}
+						</Uncover>{" "}
+						cm
 					</td>
 				</tr>
 			</table>
