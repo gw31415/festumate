@@ -37,6 +37,20 @@ export default createRoute(async (c) => {
 	}
 
 	const fetus: Fetus = await res.json();
+	const estRow = {
+		name: "",
+		value: 0,
+	};
+	if (fetus.gs !== null) {
+		estRow.name = "胎嚢径";
+		estRow.value = fetus.gs;
+	} else if (fetus.crl !== null) {
+		estRow.name = "頭臀長";
+		estRow.value = fetus.crl;
+	} else if (fetus.bpd !== null) {
+		estRow.name = "児頭大横径";
+		estRow.value = fetus.bpd;
+	}
 
 	return c.render(
 		<div class={className}>
@@ -60,30 +74,14 @@ export default createRoute(async (c) => {
 						<Uncover>{fetus.fundus_uteri}</Uncover> cm
 					</td>
 				</tr>
-				{fetus.gs !== null && (
-					<tr>
-						<td>胎嚢径</td>
-						<td>
-							<Uncover>{fetus.gs}</Uncover> cm
-						</td>
-					</tr>
-				)}
-				{fetus.crl !== null && (
-					<tr>
-						<td>頭臀長</td>
-						<td>
-							<Uncover>{fetus.crl}</Uncover> cm
-						</td>
-					</tr>
-				)}
-				{fetus.bpd !== null && (
-					<tr>
-						<td>児頭大横径</td>
-						<td>
-							<Uncover>{fetus.bpd}</Uncover> cm
-						</td>
-					</tr>
-				)}
+				<tr>
+					<td>
+						週数測定の部位: <Uncover>{estRow.name}</Uncover>
+					</td>
+					<td>
+						<Uncover>{estRow.value}</Uncover> cm
+					</td>
+				</tr>
 			</table>
 			<Description />
 			<div style="display: flex; justify-content: center;">
