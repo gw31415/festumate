@@ -90,6 +90,6 @@ export default createRoute(async (c) => {
 				</ReloadButton>
 			</div>
 		</div>,
-		{ title: "Festumate - 胎児測定値を予測しよう" },
+		{ title: "Festumate - 胎内測定値を推定しよう" },
 	);
 });
